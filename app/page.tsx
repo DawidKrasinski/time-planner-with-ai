@@ -1,5 +1,5 @@
-import { MinimalHeader } from "@/components/minimal-header"
-import { MinimalMainContent } from "@/components/minimal-main-content"
+import { MinimalHeader } from "@/components/minimal-header";
+import { MinimalMainContent } from "@/components/minimal-main-content";
 
 export default function HomePage() {
   return (
@@ -7,5 +7,5 @@ export default function HomePage() {
       <MinimalHeader />
       <MinimalMainContent />
     </div>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ChevronDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 const navigationItems = [
   { name: "Main Page", href: "/" },
@@ -23,7 +23,7 @@ const navigationItems = [
   { name: "Goals & Progress", href: "/goals-progress" },
   { name: "Settings", href: "/settings" },
   { name: "Lab / Beta", href: "/lab-beta" },
-]
+];
 
 export function MinimalHeader() {
   return (
@@ -69,5 +69,5 @@ export function MinimalHeader() {
         </DropdownMenu>
       </div>
     </header>
-  )
+  );
 }

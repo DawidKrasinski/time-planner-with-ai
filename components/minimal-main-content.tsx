@@ -1,35 +1,35 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Sparkles } from "lucide-react"
+import { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Sparkles } from "lucide-react";
 
 export function MinimalMainContent() {
-  const [input, setInput] = useState("")
-  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const [input, setInput] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const adjustHeight = () => {
-    const textarea = textareaRef.current
+    const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = "60px"
-      const newHeight = Math.max(60, textarea.scrollHeight)
-      textarea.style.height = `${newHeight}px`
+      textarea.style.height = "60px";
+      const newHeight = Math.max(60, textarea.scrollHeight);
+      textarea.style.height = `${newHeight}px`;
     }
-  }
+  };
 
   useEffect(() => {
-    adjustHeight()
-  }, [input])
+    adjustHeight();
+  }, [input]);
 
   useEffect(() => {
-    adjustHeight()
-  }, [])
+    adjustHeight();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInput(e.target.value)
-  }
+    setInput(e.target.value);
+  };
 
   return (
     <main className="pt-32 pb-16 px-6 flex items-center justify-center min-h-screen">
@@ -38,7 +38,9 @@ export function MinimalMainContent() {
           <h1 className="text-5xl md:text-6xl font-fjalla text-very-dark-navy mb-6 leading-tight">
             Welcome to Carbonara AI
           </h1>
-          <p className="text-xl md:text-2xl text-very-dark-navy/80 font-lato font-light">Your Smart Time Planner</p>
+          <p className="text-xl md:text-2xl text-very-dark-navy/80 font-lato font-light">
+            Your Smart Time Planner
+          </p>
         </div>
 
         <div className="space-y-6 max-w-2xl mx-auto">
@@ -64,5 +66,5 @@ export function MinimalMainContent() {
         </div>
       </div>
     </main>
-  )
+  );
 }
