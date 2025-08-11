@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,34 +11,36 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const menuItems = [
-  "Planer AI",
-  "My Schedule",
-  "Routines",
-  "Tasks",
-  "Breaks & Buffers",
-  "Stats & Reports",
-  "History & Journal",
-  "Goals & Progress",
-  "Settings",
-  "Lab / Beta",
+const navigationItems = [
+  { name: "Main Page", href: "/" },
+  { name: "Planer AI", href: "/planer-ai" },
+  { name: "My Schedule", href: "/my-schedule" },
+  { name: "Routines", href: "/routines" },
+  { name: "Tasks", href: "/tasks" },
+  { name: "Breaks & Buffers", href: "/breaks-buffers" },
+  { name: "Stats & Reports", href: "/stats-reports" },
+  { name: "History & Journal", href: "/history-journal" },
+  { name: "Goals & Progress", href: "/goals-progress" },
+  { name: "Settings", href: "/settings" },
+  { name: "Lab / Beta", href: "/lab-beta" },
 ];
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-light-blue/30 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-pure-white/95 backdrop-blur-md border-b border-very-dark-navy/10 shadow-sm">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center">
-          <h1 className="text-2xl font-fjalla font-bold text-very-dark-navy">
-            Carbonara AI
-          </h1>
-        </div>
+        <Link
+          href="/"
+          className="text-2xl font-fjalla font-bold text-very-dark-navy hover:opacity-80 transition-opacity"
+        >
+          Carbonara AI
+        </Link>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="ghost"
-              className="bg-transparent text-very-dark-navy hover:bg-very-dark-navy/10 rounded-xl"
+              className="bg-transparent text-very-dark-navy hover:bg-very-dark-navy/5 rounded-xl font-lato"
             >
               Menu
               <ChevronDown className="ml-2 h-4 w-4" />
@@ -45,15 +48,20 @@ export function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-56 bg-white/95 backdrop-blur-md border-light-blue/30 rounded-xl shadow-lg"
+            className="w-56 bg-pure-white border border-very-dark-navy/10 rounded-xl shadow-lg"
           >
-            {menuItems.map((item, index) => (
-              <div key={item}>
-                <DropdownMenuItem className="text-very-dark-navy hover:bg-light-blue/20 rounded-lg mx-1 my-1 cursor-pointer">
-                  {item}
+            {navigationItems.map((item, index) => (
+              <div key={item.name}>
+                <DropdownMenuItem asChild>
+                  <Link
+                    href={item.href}
+                    className="text-very-dark-navy hover:bg-very-dark-navy/5 rounded-lg mx-1 my-1 cursor-pointer font-lato"
+                  >
+                    {item.name}
+                  </Link>
                 </DropdownMenuItem>
-                {(index === 3 || index === 7) && (
-                  <DropdownMenuSeparator className="bg-light-blue/30" />
+                {(index === 0 || index === 4 || index === 8) && (
+                  <DropdownMenuSeparator className="bg-very-dark-navy/10" />
                 )}
               </div>
             ))}

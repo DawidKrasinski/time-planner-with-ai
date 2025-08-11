@@ -1,15 +1,13 @@
-import { ScheduleHeader } from "@/components/schedule-header"
-import { WeeklySchedule } from "@/components/weekly-schedule"
-import { BackNavigation } from "@/components/back-navigation"
+import { WeeklySchedule } from "@/components/weekly-schedule";
+import { Header } from "@/components/header";
 
 export default function MySchedulePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <ScheduleHeader />
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#f0eeff] via-pure-white to-[#b2d2ff]">
+      <Header />
       <div className="container mx-auto px-4 py-6 max-w-7xl">
-        <BackNavigation />
         <WeeklySchedule />
       </div>
     </div>
-  )
+  );
 }
