@@ -1,11 +1,9 @@
 import "reflect-metadata";
 import "dotenv/config";
 import { BaseEntity, DataSource } from "typeorm";
-import { Task } from "./entity/Task";
-// import { Priority } from "./entity/Priority";
-// import { User } from "./entity/User";
+import { Task } from "./entity/task";
 
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
   type: "mysql",
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || "3306"),
