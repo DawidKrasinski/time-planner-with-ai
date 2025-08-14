@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
 import { BaseEntity, DataSource } from "typeorm";
-import { Task } from "./entity/Task";
+import { Task } from "./entity/task";
 // import { Priority } from "./entity/Priority";
 // import { User } from "./entity/User";
 
