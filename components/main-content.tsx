@@ -5,8 +5,10 @@ import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { useTaskList } from "@/app/taskListProvider";
 
 export function MainContent() {
+  const { sendChatPrompt } = useTaskList();
   const [input, setInput] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -57,6 +59,7 @@ export function MainContent() {
           </div>
 
           <Button
+            onClick={() => sendChatPrompt(input)}
             size="lg"
             className="bg-very-dark-navy hover:bg-very-dark-navy/90 text-pure-white font-lato font-medium px-8 py-4 h-14 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 text-lg"
           >

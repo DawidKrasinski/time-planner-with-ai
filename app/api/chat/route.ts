@@ -21,8 +21,6 @@ export async function POST(req: Request) {
     temperature: 0.3,
   });
 
-  console.log(response);
-
   let tasks = [];
   try {
     tasks = JSON.parse(response.choices[0].message.content || "{}").tasks || [];

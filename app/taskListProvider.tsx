@@ -3,7 +3,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Task } from "../types/task";
 
-export type TaskListProvider = {};
+export type TaskListProvider = {
+  taskList: Task[];
+  sendChatPrompt: (prompt: string) => void;
+};
 
 const TaskListContext = createContext<TaskListProvider | null>(null);
 
