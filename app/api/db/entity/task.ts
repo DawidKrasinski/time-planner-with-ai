@@ -8,37 +8,28 @@ export class Task extends BaseEntity {
   @Column()
   name: string;
 
-  @Column("date")
-  date: Date;
+  @Column("datetime")
+  startTime: Date;
 
-  @Column({ length: 5 })
-  startTime: string;
-
-  @Column({ length: 5 })
-  endTime: string;
+  @Column("datetime")
+  endTime: Date;
 
   @Column("date", { nullable: true })
-  doneDate: Date | null = null;
+  doneDate: string | null = null;
 
   //   @Column({ length: 500 })
   //   description: string;
 
-  //   @ManyToOne(() => Priority, (priority) => priority.tasks)
-  //   priority: Priority;
+  // @ManyToOne(() => Priority, (priority) => priority.tasks)
+  // priority: Priority;
 
   //   @DeleteDateColumn()
   //   deleteAt: Date | null = null;
 
-  constructor(
-    name?: string,
-    date?: Date,
-    startTime?: string,
-    endTime?: string
-  ) {
+  constructor(name?: string, startTime?: Date, endTime?: Date) {
     super();
     this.name = name ?? "";
-    this.date = date ?? new Date();
-    this.startTime = startTime ?? "";
-    this.endTime = endTime ?? "";
+    this.startTime = startTime ?? new Date();
+    this.endTime = endTime ?? new Date();
   }
 }

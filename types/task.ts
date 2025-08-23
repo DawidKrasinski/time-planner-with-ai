@@ -1,8 +1,8 @@
-export type Task = {
+export type task = {
   id?: number;
   name: string;
-  doneDate?: string | null;
-  startTime: string;
-  endTime: string;
-  date: string;
+  doneDate: string | null;
+  startTime: Date;
+  endTime: Date;
+  priority: number;
 };

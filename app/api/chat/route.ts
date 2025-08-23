@@ -1,13 +1,19 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
+import { useDataSource } from "../db/data-source";
+import { Task } from "../db/entity/task";
+import { task } from "@/types/task";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// tasks
 // about me
 // priority
 export async function POST(req: Request) {
+  await useDataSource();
+
   const { prompt } = await req.json();
   const content = `
 You are an AI that creates a structured daily task list based on user requests.
@@ -55,17 +61,18 @@ Output format:
     temperature: 0.3,
   });
 
-  let tasks = [];
+  let tasks: task[] = [];
   try {
     tasks = JSON.parse(response.choices[0].message.content || "{}").tasks || [];
   } catch (err) {
     console.error("Error parsing AI response:", err);
   }
 
-  console.log(
-    "tasks ----------------------------------------------------------",
-    tasks
-  );
+  tasks.map((element: task) => {
+    const task = new Task(element.name, element.startTime, element.endTime);
+    console.log(task);
+    task.save();
+  });
 
   return NextResponse.json({ tasks });
 }

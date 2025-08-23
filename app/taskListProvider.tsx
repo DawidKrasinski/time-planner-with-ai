@@ -1,17 +1,17 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { Task } from "../types/task";
+import { task } from "../types/task";
 
 export type TaskListProvider = {
-  taskList: Task[];
+  taskList: task[];
   sendChatPrompt: (prompt: string) => void;
 };
 
 const TaskListContext = createContext<TaskListProvider | null>(null);
 
 export default function TaskListProvider(props: { children: React.ReactNode }) {
-  const [taskList, setTaskList] = useState<Task[]>([]);
+  const [taskList, setTaskList] = useState<task[]>([]);
 
   async function fetchTasks() {
     const response = await fetch("/api/tasks");
