@@ -2,7 +2,7 @@ import "reflect-metadata";
 import "dotenv/config";
 import { BaseEntity, DataSource } from "typeorm";
 import { Task } from "./entity/task";
-// import { Priority } from "./entity/Priority";
+import { Priority } from "./entity/priority";
 // import { User } from "./entity/User";
 
 console.log("hello");
@@ -14,7 +14,7 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  entities: [Task],
+  entities: [Task, Priority],
   synchronize: true,
   logging: false,
 });
