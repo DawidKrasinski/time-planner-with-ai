@@ -1,18 +1,10 @@
 "use client";
 
 import { useTaskList } from "@/app/taskListProvider";
-import { getTime, getDayName } from "@/lib/date";
+import { getTime, getDayName, getLastWeekDates, getDate } from "@/lib/date";
 import { Plus } from "lucide-react";
 
-const daysOfWeek = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
+const daysOfWeek = getLastWeekDates();
 
 export function WeeklySchedule() {
   const { taskList } = useTaskList();
@@ -24,16 +16,18 @@ export function WeeklySchedule() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-4">
         {daysOfWeek.map((day) => (
           <div
-            key={day}
+            key={day.name}
             className="bg-pure-white border border-gray-200 rounded-lg overflow-hidden"
           >
             <div className="bg-very-light-blue px-4 py-3 border-b border-gray-100">
-              <h3 className="font-fjalla text-lg text-almost-black">{day}</h3>
+              <h3 className="font-fjalla text-lg text-almost-black">
+                {day.name}
+              </h3>
             </div>
 
             <div className="p-4 space-y-3 min-h-[300px]">
               {taskList
-                .filter((task) => getDayName(task.startTime) === day)
+                .filter((task) => getDate(task.startTime) === day.date)
                 .map((task, index) => (
                   <div
                     key={index}

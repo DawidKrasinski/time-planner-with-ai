@@ -38,10 +38,10 @@ export function MainContent() {
       <div className="container mx-auto max-w-4xl text-center">
         <div className="mb-12">
           <h1 className="text-5xl md:text-6xl font-fjalla text-very-dark-navy mb-6 leading-tight">
-            Welcome to Carbonara AI
+            Welcome to Time Planner
           </h1>
           <p className="text-xl md:text-2xl text-very-dark-navy/80 font-lato font-light">
-            Your Smart Time Planner
+            Your Smart schedule connected with AI
           </p>
         </div>
 

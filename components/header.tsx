@@ -33,7 +33,7 @@ export function Header() {
           href="/"
           className="text-2xl font-fjalla font-bold text-very-dark-navy hover:opacity-80 transition-opacity"
         >
-          Carbonara AI
+          Time Planner AI
         </Link>
 
         <DropdownMenu>
