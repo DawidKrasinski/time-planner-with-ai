@@ -22,9 +22,6 @@ export class Priority extends BaseEntity {
   @OneToMany(() => Task, (task) => task.priority)
   tasks!: Task[];
 
-  //   @DeleteDateColumn()
-  //   deletedAt: Date | null = null;
-
   constructor(order?: number, color?: string) {
     super();
     this.order = order ?? 0;

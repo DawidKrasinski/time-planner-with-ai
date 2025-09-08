@@ -5,9 +5,7 @@ import { Task } from "./entity/task";
 import { Priority } from "./entity/priority";
 // import { User } from "./entity/User";
 
-console.log("hello");
-
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
   type: "mysql",
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || "3306"),
@@ -15,7 +13,7 @@ const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [Task, Priority],
-  synchronize: true,
+  synchronize: false,
   logging: false,
 });
 

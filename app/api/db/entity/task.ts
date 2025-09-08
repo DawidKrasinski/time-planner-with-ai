@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   ManyToOne,
+  DeleteDateColumn,
 } from "typeorm";
 import { Priority } from "./priority";
 
@@ -30,8 +31,8 @@ export class Task extends BaseEntity {
   @ManyToOne(() => Priority, (priority) => priority.tasks)
   priority: Priority;
 
-  //   @DeleteDateColumn()
-  //   deleteAt: Date | null = null;
+  @DeleteDateColumn()
+  deleteAt: Date | null = null;
 
   constructor(
     name?: string,
