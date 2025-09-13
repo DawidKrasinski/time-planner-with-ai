@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
-import { useDataSource } from "../db/data-source";
+// import { useDataSource } from "../db/data-source";
 import { Task } from "../db/entity/task";
 import { task } from "@/types/task";
 
@@ -12,7 +12,7 @@ const openai = new OpenAI({
 // about me
 // priority
 export async function POST(req: Request) {
-  await useDataSource();
+  //useDataSource();
 
   const { prompt } = await req.json();
   const content = `
@@ -25,7 +25,7 @@ Instructions:
    - startTime: string | null (ISO 8601 format, e.g. "2025-08-17T09:00:00Z")
    - endTime: string | null (ISO 8601 format) 
    - doneDate: string | null (ISO 8601 format)
-   - priority: number (1 to 10, if higher the more important)
+   - priority: number (0 to 9, if higher the more important)
 
 3. Today's date is ${new Date().toISOString()} — use it as reference for default dates if needed.
 4. Sort the tasks by time, if the task don't have time add it time in the free space,
@@ -69,7 +69,12 @@ Output format:
   }
 
   tasks.map((element: task) => {
-    const task = new Task(element.name, element.startTime, element.endTime);
+    const task = new Task(
+      element.name,
+      element.priority,
+      element.startTime,
+      element.endTime
+    );
     console.log(task);
     task.save();
   });

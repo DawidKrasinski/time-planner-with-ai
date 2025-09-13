@@ -3,7 +3,6 @@ import "dotenv/config";
 import { BaseEntity, DataSource } from "typeorm";
 import { Task } from "./entity/task";
 import { Priority } from "./entity/priority";
-// import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -13,12 +12,14 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [Task, Priority],
+  migrations: ["app/api/db/migrations/*.ts"],
   synchronize: false,
   logging: false,
 });
 
-export const useDataSource = async () => {
-  if (!AppDataSource.isInitialized) await AppDataSource.initialize();
+export const getDataSource = () => {
+  if (!AppDataSource.isInitialized) AppDataSource.initialize();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   BaseEntity.useDataSource(AppDataSource);
   return AppDataSource;
 };

@@ -1,12 +1,15 @@
+import "reflect-metadata";
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   BaseEntity,
   ManyToOne,
-  DeleteDateColumn,
+  // ManyToOne,
+  // DeleteDateColumn,
 } from "typeorm";
 import { Priority } from "./priority";
+// import { Priority } from "./priority";
 
 @Entity()
 export class Task extends BaseEntity {
@@ -29,21 +32,21 @@ export class Task extends BaseEntity {
   //   description: string;
 
   @ManyToOne(() => Priority, (priority) => priority.tasks)
-  priority: Priority;
+  priority: number;
 
-  @DeleteDateColumn()
-  deleteAt: Date | null = null;
+  // @DeleteDateColumn()
+  // deleteAt: Date | null = null;
 
   constructor(
     name?: string,
+    priority?: number,
     startTime?: Date,
-    endTime?: Date,
-    priority?: Priority
+    endTime?: Date
   ) {
     super();
     this.name = name ?? "";
     this.startTime = startTime ?? new Date();
     this.endTime = endTime ?? new Date();
-    this.priority = priority ?? new Priority();
+    this.priority = priority ?? 0;
   }
 }

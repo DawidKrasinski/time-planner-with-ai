@@ -4,9 +4,11 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   OneToMany,
-  DeleteDateColumn,
+  // OneToMany,
+  // DeleteDateColumn,
 } from "typeorm";
 import { Task } from "./task";
+// import { Task } from "./task";
 
 @Entity()
 export class Priority extends BaseEntity {
@@ -14,17 +16,21 @@ export class Priority extends BaseEntity {
   id!: number;
 
   @Column()
+  name!: string;
+
+  @Column({ default: "#ffffff" })
   color!: string;
 
-  @Column("int")
+  @Column({ name: "order", type: "int", default: 0 })
   order!: number;
 
   @OneToMany(() => Task, (task) => task.priority)
   tasks!: Task[];
 
-  constructor(order?: number, color?: string) {
+  constructor(name: string, order: number, color: string) {
     super();
-    this.order = order ?? 0;
-    this.color = color ?? "";
+    this.name = name;
+    this.order = order;
+    this.color = color;
   }
 }
