@@ -4,11 +4,11 @@ import { Task } from "../db/entity/task";
 
 export async function GET() {
   try {
-    getDataSource();
+    await getDataSource();
     const tasks = await Task.createQueryBuilder("task")
-      //.leftJoinAndSelect("task.priority", "priority")
-      // .orderBy("task.doneDate", "ASC")
-      //.addOrderBy("task.priority", "DESC")
+      .leftJoinAndSelect("task.priority", "priority")
+      .orderBy("task.doneDate", "ASC")
+      .addOrderBy("task.priority", "DESC")
       .addOrderBy("task.startTime", "ASC")
       .getMany();
 

@@ -12,13 +12,13 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [Task, Priority],
-  migrations: ["app/api/db/migrations/*.ts"],
+  migrations: ["app/api/db/migrations/*.js"],
   synchronize: false,
   logging: false,
 });
 
-export const getDataSource = () => {
-  if (!AppDataSource.isInitialized) AppDataSource.initialize();
+export const getDataSource = async () => {
+  if (!AppDataSource.isInitialized) await AppDataSource.initialize();
   // eslint-disable-next-line react-hooks/rules-of-hooks
   BaseEntity.useDataSource(AppDataSource);
   return AppDataSource;

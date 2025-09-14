@@ -1,6 +1,5 @@
 import { Priority } from "../entity/priority";
 import { getDataSource } from "../data-source";
-import { priority } from "@/types/priority";
 
 const priorities: Partial<Priority>[] = [
   { name: "low", color: "green", order: 1 },
@@ -9,9 +8,9 @@ const priorities: Partial<Priority>[] = [
 ];
 
 async function seedPriorities() {
-  const dataSource = getDataSource();
+  const dataSource = await getDataSource();
 
-  await dataSource.initialize();
+  await dataSource.initialize(); //?
 
   for (const p of priorities) {
     const existing = await dataSource
