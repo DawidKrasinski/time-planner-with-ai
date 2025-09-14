@@ -1,9 +1,9 @@
-export function getDate(date: Date = new Date()) {
-  return date.toString().split("T")[0];
+export function getDate(date: string) {
+  return date.split("T")[0];
 }
 
-export function getTime(date: Date = new Date()) {
-  return date.toString().slice(11, 16);
+export function getTime(date: string) {
+  return date.slice(11, 16);
 }
 
 export function getDayName(date: Date | string): string {
@@ -11,7 +11,7 @@ export function getDayName(date: Date | string): string {
   return day.toLocaleDateString("en-US", { weekday: "long" });
 }
 
-export function getLastWeekDates() {
+export function getCurrentWeekDates() {
   const daysOfWeek = [
     "Monday",
     "Tuesday",
@@ -23,16 +23,19 @@ export function getLastWeekDates() {
   ];
 
   const today = new Date();
-  const dayIndex = (today.getDay() + 6) % 7; // Sunday=0 Monday=1 ... Saturday=6
+  const dayIndex = (today.getDay() + 6) % 7; // Monday=0 ... Sunday=6
+
+  // Get Monday of the current week
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - dayIndex);
 
   return daysOfWeek.map((day, i) => {
-    const diff = (dayIndex - i + 7) % 7 || 7; // ensure "last" even if today
-    const d = new Date(today);
-    d.setDate(today.getDate() - diff);
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
 
     return {
       name: day,
-      date: getDate(d), // YYYY-MM-DD
+      date: getDate(d.toISOString()),
     };
   });
 }

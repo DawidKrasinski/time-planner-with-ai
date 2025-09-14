@@ -20,10 +20,10 @@ export class Task extends BaseEntity {
   name: string;
 
   @Column("datetime")
-  startTime: Date;
+  startTime: string;
 
   @Column("datetime")
-  endTime: Date;
+  endTime: string;
 
   @Column("date", { nullable: true })
   doneDate: string | null = null;
@@ -40,13 +40,13 @@ export class Task extends BaseEntity {
   constructor(
     name?: string,
     priority?: number,
-    startTime?: Date,
-    endTime?: Date
+    startTime?: string,
+    endTime?: string
   ) {
     super();
     this.name = name ?? "";
-    this.startTime = startTime ?? new Date();
-    this.endTime = endTime ?? new Date();
+    this.startTime = startTime ?? "";
+    this.endTime = endTime ?? "";
     this.priority = priority ?? 0;
   }
 }

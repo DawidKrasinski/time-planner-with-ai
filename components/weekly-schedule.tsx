@@ -1,10 +1,10 @@
 "use client";
 
 import { useTaskList } from "@/app/taskListProvider";
-import { getTime, getLastWeekDates, getDate } from "@/lib/date";
+import { getTime, getCurrentWeekDates, getDate } from "@/lib/date";
 import { Plus } from "lucide-react";
 
-const daysOfWeek = getLastWeekDates();
+const daysOfWeek = getCurrentWeekDates();
 
 export function WeeklySchedule() {
   const { taskList } = useTaskList();
@@ -34,7 +34,7 @@ export function WeeklySchedule() {
                     className="bg-pure-white border border-gray-100 rounded-md p-3 shadow-sm"
                   >
                     <div className="text-xs font-lato text-gray-600 mb-1">
-                      {getTime(task.startTime)}
+                      {getTime(task.startTime)} - {getTime(task.endTime)}
                     </div>
                     <div className="text-sm font-lato text-almost-black">
                       {task.name}

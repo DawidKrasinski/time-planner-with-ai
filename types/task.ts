@@ -2,7 +2,7 @@ export type task = {
   id?: number;
   name: string;
   doneDate: string | null;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
   priority: number;
 };
