@@ -12,17 +12,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navigationItems = [
-  { name: "Main Page", href: "/" },
-  { name: "Planer AI", href: "/planer-ai" },
+  { name: "Planer AI", href: "/" },
   { name: "My Schedule", href: "/my-schedule" },
-  { name: "Routines", href: "/routines" },
-  { name: "Tasks", href: "/tasks" },
-  { name: "Breaks & Buffers", href: "/breaks-buffers" },
-  { name: "Stats & Reports", href: "/stats-reports" },
-  { name: "History & Journal", href: "/history-journal" },
-  { name: "Goals & Progress", href: "/goals-progress" },
-  { name: "Settings", href: "/settings" },
-  { name: "Lab / Beta", href: "/lab-beta" },
+  { name: "Tasks & Routines", href: "/tasks" },
+  { name: "Stats & History", href: "/stats" },
+  { name: "Goals & Progress", href: "/goals" },
+  { name: "About me & Settings", href: "/settings" },
 ];
 
 export function Header() {
