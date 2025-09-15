@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [Task, Priority],
-  migrations: ["app/api/db/migrations/*.js"],
+  // migrations: ["app/api/db/migrations/*"], Prawdopodobnie trzeba będzie wyrzucić db za app
   synchronize: false,
   logging: false,
 });

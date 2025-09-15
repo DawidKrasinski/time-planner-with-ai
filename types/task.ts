@@ -1,3 +1,5 @@
+import { Categories } from "./categories";
+
 export type task = {
   id?: number;
   name: string;
@@ -5,4 +7,5 @@ export type task = {
   startTime: string;
   endTime: string;
   priority: number;
+  categories: Categories[];
 };

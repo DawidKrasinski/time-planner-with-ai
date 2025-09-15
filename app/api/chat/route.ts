@@ -19,13 +19,20 @@ export async function POST(req: Request) {
 You are an AI that creates a structured daily task list based on user requests.
 
 Instructions:
-1. Analyze the user input and determine how many distinct tasks it contains.
+1. Analyze the user input and determine how many distinct tasks it contains. For each task decide what categories it sould contains:
+  Routine - the task is a rutine, the user do it more then once
+  Microtask - the task can be possibly ended in less than 5 minutes
+  RegularTask - just regular individual task
+  Immutable - the task time is immutable
+  *Task can have more then one categories
+
 2. For each task, return an object with the following fields:
    - name: string (short task description)
    - startTime: string | null (ISO 8601 format, e.g. "2025-08-17T09:00:00Z")
    - endTime: string | null (ISO 8601 format) 
    - doneDate: string | null (ISO 8601 format)
-   - priority: number (0 to 2, if higher the more important)
+   - priority: number (1 to 3, if higher the more important)
+   - categories: enum Categories { Routine = "routine", Microtask = "microtask", RegularTask = "regular-task", Immutable = "immutable"}
 
 3. Today's date is ${new Date().toISOString()} — use it as reference for default dates if needed.
 4. Sort the tasks by time, if the task don't have time add it time in the free space,
@@ -44,6 +51,7 @@ Output format:
       "endTime": "...",
       "doneDate": "...",
       "priority": "...",
+      "categories": "...",
     }
   ]
 }
@@ -61,6 +69,11 @@ Output format:
     temperature: 0.3,
   });
 
+  console.log(
+    "-------------------------------------------------",
+    response.choices[0].message
+  );
+
   let tasks: task[] = [];
   try {
     tasks = JSON.parse(response.choices[0].message.content || "{}").tasks || [];
@@ -73,7 +86,8 @@ Output format:
       element.name,
       element.priority,
       element.startTime,
-      element.endTime
+      element.endTime,
+      element.categories
     );
     console.log(task);
     task.save();
