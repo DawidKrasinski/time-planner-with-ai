@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
-import { getDataSource } from "../db/data-source";
-import { Task } from "../db/entity/task";
+import { getDataSource } from "../../../db/data-source";
+import { Task } from "../../../db/entities/Task";
 import { task } from "@/src/types/task";
 
 const openai = new OpenAI({

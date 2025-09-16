@@ -4,33 +4,32 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   OneToMany,
-  // OneToMany,
-  // DeleteDateColumn,
+  Index,
 } from "typeorm";
 import { Task } from "./Task";
-// import { Task } from "./task";
 
 @Entity()
 export class Priority extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
   name!: string;
 
   @Column({ default: "#ffffff" })
   color!: string;
 
   @Column({ name: "order", type: "int", default: 0 })
+  @Index()
   order!: number;
 
-  @OneToMany(() => Task, (task) => task.priority)
-  tasks!: Task[];
+  @OneToMany(() => Task, (task) => task.priority, { lazy: true })
+  tasks?: Promise<Task[]>;
 
   constructor(name: string, order: number, color: string) {
     super();
-    this.name = name;
-    this.order = order;
-    this.color = color;
+    this.name = name || "";
+    this.order = order || 0;
+    this.color = color || "#ffffff";
   }
 }

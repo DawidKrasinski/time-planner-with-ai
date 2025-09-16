@@ -8,10 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "typeorm": "ts-node -P tsconfig.typeorm.json ./node_modules/typeorm/cli.js",
-    "migration:generate": "npm run typeorm -- migration:generate ./app/api/db/migrations/${npm_config_name:-Migration} -d ./app/api/db/data-source.ts",
-    "migration:run": "npm run typeorm -- migration:run -d ./app/api/db/data-source.ts",
-    "migration:revert": "npm run typeorm -- migration:revert -d ./app/api/db/data-source.ts",
-    "seed": "ts-node --project tsconfig.typeorm.json app/api/db/seeds/priority.ts"
+    "migration:generate": "npm run typeorm -- migration:generate ./src/db/migrations/${npm_config_name:-Migration} -d ./src/db/data-source.ts",
+    "migration:run": "npm run typeorm -- migration:run -d ./src/db/data-source.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d ./src/db/data-source.ts",
+    "seed": "ts-node --project tsconfig.typeorm.json src/db/seeds/priority.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.15",
