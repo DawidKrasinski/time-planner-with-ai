@@ -7,7 +7,7 @@ import {
   // OneToMany,
   // DeleteDateColumn,
 } from "typeorm";
-import { Task } from "./task";
+import { Task } from "./Task";
 // import { Task } from "./task";
 
 @Entity()

@@ -3,9 +3,9 @@
 import type React from "react";
 
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import { Sparkles } from "lucide-react";
-import { useTaskList } from "@/app/taskListProvider";
+import { useTaskList } from "@/src/context/TaskListProvider";
 
 export function MainContent() {
   const { sendChatPrompt } = useTaskList();

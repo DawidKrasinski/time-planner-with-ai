@@ -1,4 +1,4 @@
-import { Priority } from "../entity/priority";
+import { Priority } from "../entities/Priority";
 import { getDataSource } from "../data-source";
 
 const priorities: Partial<Priority>[] = [

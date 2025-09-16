@@ -6,8 +6,8 @@ import {
   BaseEntity,
   ManyToOne,
 } from "typeorm";
-import { Priority } from "./priority";
-import { Categories } from "../../../../types/categories";
+import { Priority } from "./Priority";
+import { Categories } from "../../types/categories";
 
 @Entity()
 export class Task extends BaseEntity {

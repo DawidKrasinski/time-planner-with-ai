@@ -1,7 +1,7 @@
 "use client";
 
-import { useTaskList } from "@/app/taskListProvider";
-import { getTime, getCurrentWeekDates, getDate } from "@/lib/date";
+import { useTaskList } from "@/src/context/TaskListProvider";
+import { getTime, getCurrentWeekDates, getDate } from "@/src/lib/date";
 import { Plus } from "lucide-react";
 
 const daysOfWeek = getCurrentWeekDates();

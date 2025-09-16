@@ -1,5 +1,5 @@
-import { WeeklySchedule } from "@/components/weekly-schedule";
-import { Header } from "@/components/header";
+import { WeeklySchedule } from "@/src/components/schedule/weekly-schedule";
+import { Header } from "@/src/components/main/header";
 
 export default function MySchedulePage() {
   return (

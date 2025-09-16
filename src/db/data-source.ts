@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import "dotenv/config";
 import { BaseEntity, DataSource } from "typeorm";
-import { Task } from "./entity/task";
-import { Priority } from "./entity/priority";
+import { Task } from "./entities/Task";
+import { Priority } from "./entities/Priority";
 
 export const AppDataSource = new DataSource({
   type: "mysql",

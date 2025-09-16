@@ -2,15 +2,12 @@ import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { getDataSource } from "../db/data-source";
 import { Task } from "../db/entity/task";
-import { task } from "@/types/task";
+import { task } from "@/src/types/task";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// tasks
-// about me
-// priority
 export async function POST(req: Request) {
   await getDataSource();
 
@@ -68,11 +65,6 @@ Output format:
     ],
     temperature: 0.3,
   });
-
-  console.log(
-    "-------------------------------------------------",
-    response.choices[0].message
-  );
 
   let tasks: task[] = [];
   try {
