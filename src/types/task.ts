@@ -1,3 +1,4 @@
+import { Priority } from "../db/entities/Priority";
 import { Categories } from "./categories";
 
 export type task = {
@@ -6,6 +7,6 @@ export type task = {
   doneDate: string | null;
   startTime: string;
   endTime: string;
-  priority: number;
+  priority: Priority;
   categories: Categories[];
 };

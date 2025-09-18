@@ -26,7 +26,7 @@ export class Priority extends BaseEntity {
   @OneToMany(() => Task, (task) => task.priority, { lazy: true })
   tasks?: Promise<Task[]>;
 
-  constructor(name: string, order: number, color: string) {
+  constructor(name?: string, order?: number, color?: string) {
     super();
     this.name = name || "";
     this.order = order || 0;
